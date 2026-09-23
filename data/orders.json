@@ -1,0 +1,62 @@
+[
+  {
+    "order_id": "ORD1001",
+    "customer_name": "Arun Mehta",
+    "status": "Processing",
+    "expected_delivery_date": "2026-09-27"
+  },
+  {
+    "order_id": "ORD1002",
+    "customer_name": "Maya Thomas",
+    "status": "Shipped",
+    "expected_delivery_date": "2026-09-25"
+  },
+  {
+    "order_id": "ORD1003",
+    "customer_name": "Daniel Roy",
+    "status": "Delivered",
+    "expected_delivery_date": "2026-09-21"
+  },
+  {
+    "order_id": "ORD1004",
+    "customer_name": "Sara Menon",
+    "status": "Processing",
+    "expected_delivery_date": "2026-09-29"
+  },
+  {
+    "order_id": "ORD1005",
+    "customer_name": "Vikram Nair",
+    "status": "Shipped",
+    "expected_delivery_date": "2026-09-26"
+  },
+  {
+    "order_id": "ORD1006",
+    "customer_name": "Leah Mathew",
+    "status": "Delivered",
+    "expected_delivery_date": "2026-09-20"
+  },
+  {
+    "order_id": "ORD1007",
+    "customer_name": "Rohan Das",
+    "status": "Cancelled",
+    "expected_delivery_date": "2026-09-30"
+  },
+  {
+    "order_id": "ORD1008",
+    "customer_name": "Nina Joseph",
+    "status": "Shipped",
+    "expected_delivery_date": "2026-09-28"
+  },
+  {
+    "order_id": "ORD1009",
+    "customer_name": "Adil Khan",
+    "status": "Processing",
+    "expected_delivery_date": "2026-10-01"
+  },
+  {
+    "order_id": "ORD1010",
+    "customer_name": "Emma Paul",
+    "status": "Delivered",
+    "expected_delivery_date": "2026-09-22"
+  }
+]

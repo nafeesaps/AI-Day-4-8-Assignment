@@ -1,0 +1,29 @@
+Product FAQ
+
+What is the company's main product?
+
+The company provides a cloud-based productivity platform designed to help small teams organize their work, manage tasks, and collaborate.
+
+How do customers access the product?
+
+Customers can access the platform through a supported web browser using their registered account credentials.
+
+Can customers use the product remotely?
+
+Yes. The platform is designed for teams that work from different locations. Customers only need a supported browser and an internet connection.
+
+How can a customer report a problem?
+
+Customers can contact the support team through the company's support channel. They should describe the problem clearly and include their order ID when the issue is related to a specific purchase.
+
+Can customers request a refund?
+
+Yes. Eligible customers can request a refund according to the company's refund policy. The standard refund window is 14 days from the original purchase date.
+
+What should customers do if they cannot access their account?
+
+Customers should use the approved account recovery process. They should never send their password or verification code to the support team.
+
+How can customers check an order?
+
+Customers can contact the support service with their order ID. The support system can then retrieve the current order status and expected delivery information.
