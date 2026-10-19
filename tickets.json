@@ -1,0 +1,26 @@
+[
+    {
+        "ticket_id": "TICKET-001",
+        "title": "User Support Request",
+        "description": "Create a support ticket for my broken keyboard with High priority.",
+        "priority": "High",
+        "status": "Open",
+        "created_at": "2026-10-19T14:53:37.184075"
+    },
+    {
+        "ticket_id": "TICKET-002",
+        "title": "User Support Request",
+        "description": "Log a support ticket for VPN connection failure.",
+        "priority": "Medium",
+        "status": "Open",
+        "created_at": "2026-10-19T14:53:56.809088"
+    },
+    {
+        "ticket_id": "TICKET-003",
+        "title": "User Support Request",
+        "description": "What should I do if a product arrives damaged?",
+        "priority": "Medium",
+        "status": "Open",
+        "created_at": "2026-10-19T14:54:04.843795"
+    }
+]

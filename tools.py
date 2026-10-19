@@ -1,21 +1,50 @@
 import json
-from pathlib import Path
+import os
+from datetime import datetime
 
+TICKETS_FILE = "tickets.json"
+MAX_TICKETS_PER_SESSION = 3  # Rate limit
 
-ORDERS_FILE = Path("data/orders.json")
+def load_tickets():
+    if not os.path.exists(TICKETS_FILE):
+        return []
+    with open(TICKETS_FILE, "r", encoding="utf-8") as f:
+        try:
+            return json.load(f)
+        except json.JSONDecodeError:
+            return []
 
+def save_ticket(ticket_data):
+    tickets = load_tickets()
+    tickets.append(ticket_data)
+    with open(TICKETS_FILE, "w", encoding="utf-8") as f:
+        json.dump(tickets, f, indent=4, ensure_ascii=False)
 
-def get_order_status(order_id):
-    """Return order status and expected delivery date."""
+def create_ticket(title: str, description: str, priority: str = "Medium") -> str:
+    """
+    Creates a support ticket after validating priority and checking rate limits.
+    """
+    # 1. Validate priority
+    valid_priorities = ["Low", "Medium", "High", "Urgent"]
+    if priority not in valid_priorities:
+        priority = "Medium"  # Default fallback
 
-    with open(ORDERS_FILE, "r", encoding="utf-8") as file:
-        orders = json.load(file)
+    # 2. Check rate limit
+    tickets = load_tickets()
+    if len(tickets) >= MAX_TICKETS_PER_SESSION:
+        return "Error: Rate limit reached. You can only create up to 3 tickets per session."
 
-    for order in orders:
-        if str(order["order_id"]) == str(order_id):
-            return {
-                "status": order["status"],
-                "expected_delivery_date": order["expected_delivery_date"]
-            }
+    # 3. Create ticket record
+    ticket_id = f"TICKET-{len(tickets) + 1:03d}"
+    ticket_data = {
+        "ticket_id": ticket_id,
+        "title": title,
+        "description": description,
+        "priority": priority,
+        "status": "Open",
+        "created_at": datetime.utcnow().isoformat()
+    }
 
-    return "order not found"
+    # 4. Save to storage
+    save_ticket(ticket_data)
+    return f"Success! Ticket {ticket_id} has been created with priority '{priority}'."

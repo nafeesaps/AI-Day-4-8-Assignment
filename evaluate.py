@@ -1,49 +1,42 @@
 import json
-from rag import answer_with_retrieval
+from rag import process_query
 
+def run_evaluation():
+    with open("tests.json", "r", encoding="utf-8") as f:
+        tests = json.load(f)
 
-with open("tests.json", "r", encoding="utf-8") as file:
-    tests = json.load(file)
+    passed = 0
+    total = len(tests)
 
+    print("=" * 80)
+    print("TASK 5 EVALUATION")
+    print("=" * 80)
 
-def check_result(answer, expected_keywords):
-    answer_lower = answer.lower()
+    for test in tests:
+        test_id = test["id"]
+        question = test["question"]
+        expected_keywords = test["expected_keywords"]
 
-    for keyword in expected_keywords:
-        if keyword.lower() not in answer_lower:
-            return False
+        answer, sources = process_query(question)
 
-    return True
+        answer_lower = answer.lower()
+        success = all(kw.lower() in answer_lower for kw in expected_keywords)
 
+        if success:
+            passed += 1
+            result_str = "PASS"
+        else:
+            result_str = "FAIL"
 
-passed = 0
+        print(f"\nTest {test_id}: {result_str}")
+        print(f"Question: {question}")
+        print(f"Expected keywords: {expected_keywords}")
+        print(f"Answer: {answer}")
+        print(f"Sources: {', '.join(sources)}")
 
-print("=" * 80)
-print("TASK 5 EVALUATION")
-print("=" * 80)
+    print("\n" + "=" * 80)
+    print(f"FINAL SCORE: {passed}/{total}")
+    print("=" * 80)
 
-for i, test in enumerate(tests, start=1):
-
-    question = test["question"]
-    expected_keywords = test["expected_keywords"]
-
-    answer, sources = answer_with_retrieval(question)
-
-    result = check_result(answer, expected_keywords)
-
-    if result:
-        passed += 1
-        status = "PASS"
-    else:
-        status = "FAIL"
-
-    print(f"\nTest {i}: {status}")
-    print("Question:", question)
-    print("Expected keywords:", expected_keywords)
-    print("Answer:", answer)
-    print("Sources:", ", ".join(sources))
-
-
-print("\n" + "=" * 80)
-print(f"FINAL SCORE: {passed}/{len(tests)}")
-print("=" * 80)
+if __name__ == "__main__":
+    run_evaluation()
